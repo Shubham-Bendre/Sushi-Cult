@@ -1,32 +1,59 @@
 # Sushi Cult
 
-## Overview
-Sushi Cult is a Flutter-based application designed for sushi enthusiasts, offering a user-friendly platform to browse and order a variety of sushi dishes. The app is structured to provide an intuitive experience, ensuring users can easily navigate through the menu, add items to their cart, and manage their orders.
+Sushi Cult is a Flutter-based application designed for sushi lovers who want a convenient and enjoyable way to order their favorite sushi dishes. The app provides a seamless user experience with an attractive interface and intuitive navigation.
+
+## Table of Contents
+
+- [Features](#features)
+- [Architecture](#architecture)
+- [Models](#models)
+- [Pages](#pages)
+- [State Management](#state-management)
+- [Getting Started](#getting-started)
 
 ## Features
-- **Dynamic Navigation**: The application utilizes named routes for seamless navigation between the introductory page, menu, and cart, enhancing user experience.
-- **State Management**: Implements the Provider package for efficient state management, allowing real-time updates to the shopping cart.
-- **Responsive Design**: Built with Flutter's Material design principles, ensuring a responsive layout that adapts to various screen sizes.
-- **Custom Fonts**: Integrates Google Fonts for a stylish and modern look.
 
-## Technical Details
+- **User-Friendly Interface**: The app is designed with a clean and modern UI, making it easy for users to browse through the menu and place orders.
+- **Menu Display**: A dynamic menu showcasing various sushi dishes, allowing users to select their favorites.
+- **Cart Functionality**: Users can add items to their cart, review their selections, and proceed to checkout.
+- **Responsive Design**: The app is optimized for both mobile and tablet devices, ensuring a smooth experience across different screen sizes.
+
+## Architecture
+
+The Sushi Cult app follows a structured architecture that enhances maintainability and scalability. It utilizes the Model-View-ViewModel (MVVM) pattern, which separates the business logic from the UI components, allowing for easier testing and code management.
+
 ### Main Components
-- **main.dart**: The entry point of the application, where the `ChangeNotifierProvider` wraps the entire app, providing state management capabilities through the `Shop` model.
-- **Shop Model**: Centralized model for managing the shopping cart state, including adding and removing items.
-- **Pages**:
-  - **Intro Page**: A welcoming introduction to the app, guiding users to the main menu.
-  - **Menu Page**: Displays a curated list of sushi dishes available for order. Users can select their desired items with ease.
-  - **Cart Page**: Allows users to view their selected items, modify quantities, and proceed to checkout.
 
-### Dependencies
-- **Flutter SDK**: Utilizes the latest Flutter framework for cross-platform app development.
-- **Provider**: For state management, enabling a reactive programming model.
-- **Google Fonts**: Enhances the typography of the application for a polished look.
-- **Cupertino Icons**: Provides iOS-style icons, ensuring consistency across platforms.
+- **Models**: Represents the data structure of the application (e.g., `Shop`, `MenuItem`).
+- **Views**: Contains the UI components, including the introduction page, menu page, and cart page.
+- **Providers**: Manages the state of the application, enabling communication between different parts of the app.
 
-## Installation
-To run this application locally, follow these steps:
+## Models
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/my_app.git
+### Shop
+The `Shop` model serves as the central data repository for the application. It manages the list of menu items, the user's cart, and other essential functionalities.
+
+#### Key Properties:
+- **menuItems**: A list of available sushi items.
+- **cartItems**: A list of items added to the user's cart.
+  
+#### Methods:
+- **addItemToCart(MenuItem item)**: Adds the selected menu item to the cart.
+- **removeItemFromCart(MenuItem item)**: Removes the specified item from the cart.
+- **clearCart()**: Empties the cart, allowing users to start fresh.
+
+## Pages
+
+### IntroPage
+The entry point of the application, presenting a welcoming introduction to users. This page typically includes branding elements and navigational prompts.
+
+### MenuPage
+Displays a comprehensive list of sushi dishes available for order. Users can browse through different categories, view item details, and add items to their cart.
+
+### CartPage
+Allows users to review their selected items before checkout. Users can modify quantities, remove items, and see the total price of their order.
+
+## State Management
+
+Sushi Cult utilizes the Provider package for state management, which simplifies the process of sharing and managing application state across different widgets. The `ChangeNotifierProvider` allows the `Shop` model to notify the UI of changes, ensuring that the interface remains updated without unnecessary complexity.
+
